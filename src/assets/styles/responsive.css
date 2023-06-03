@@ -1,0 +1,84 @@
+@media screen and (max-width: 1440px) {
+  .login .logo-wrapper {
+    margin-bottom: 40px;
+  }
+  .login .logo-wrapper .logo_nextedgelogo {
+    max-width: 250px;
+  }
+  .login .logo-wrapper .logo_reelanalyticslogo {
+    max-width: 100px;
+  }
+  .login .form .form-item .input-field {
+    min-height: 60px;
+  }
+  .login .form .form-item .password-icon {
+    top: 16px;
+  }
+  .login .form .checkbox {
+    margin-bottom: 40px;
+  }
+  .login .form .login-btn {
+    min-height: 60px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .login .logo-wrapper {
+    margin-bottom: 30px;
+  }
+  .login .logo-wrapper .logo_nextedgelogo {
+    max-width: 200px;
+  }
+  .login .logo-wrapper .logo_reelanalyticslogo {
+    max-width: 80px;
+  }
+  .login .form .form-item .input-field {
+    min-height: 50px;
+  }
+  .login .form .form-item .password-icon {
+    top: 11px;
+  }
+  .login .form .checkbox {
+    margin-bottom: 35px;
+  }
+  .login .form .login-btn {
+    min-height: 50px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .show--lg {
+    display: none;
+  }
+  .hide--lg {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .show--md {
+    display: none;
+  }
+  .hide--md {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .show--sm {
+    display: none;
+  }
+  .hide--sm {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .show--xs {
+    display: none;
+  }
+  .hide--xs {
+    display: block;
+  }
+}
+/*# sourceMappingURL=responsive.css.map */
