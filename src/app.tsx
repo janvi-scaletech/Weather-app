@@ -8,15 +8,16 @@ import ResetPassword from 'features/auth/component/resetPassword';
 
 import { IState } from 'shared/interface/state';
 import Layout from 'hoc/layout/layout';
+import WeatherData from 'features/weather/container/weather';
 
 const App: React.FC = () => {
 	const isLogin: boolean = useSelector((state: IState) => state.auth.isLogin);
 
-	if (isLogin) {
+	if (!isLogin) {
 		return (
 			<Layout>
 				<Routes>
-					<Route path='/' />
+					<Route path='/' element={<WeatherData />} />
 				</Routes>
 			</Layout>
 		);

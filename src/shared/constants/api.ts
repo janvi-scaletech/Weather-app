@@ -7,6 +7,7 @@ export const API_CONFIG = {
 		login: 'login',
 		forget: 'password/forgot',
 		reset: 'password/reset'
+		// weather: 'weather'
 	}
 };
 
