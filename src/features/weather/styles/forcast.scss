@@ -1,4 +1,47 @@
+@import '../../../assets/styles/common/function.scss';
+@import '../../../assets/styles/variable';
 .input {
 	border: 2px solid red;
 	color: black;
+}
+.main-container {
+	.weather-info-wrapper {
+		.weather-description {
+			padding: 30px;
+			width: 70%;
+			background: white;
+			color: black;
+
+			.date-info {
+				color: getColor($grey, 100);
+			}
+
+			.wind-information-wrapper {
+				background-color: #8282820f;
+				border-radius: 5px;
+				width: 30%;
+				padding: 20px;
+
+				.wind-icon {
+					fill: getColor($blue, 100);
+				}
+			}
+		}
+		.weather-info {
+			width: 25%;
+			background: #4678b2;
+			justify-content: space-between;
+			padding: 0px 25px;
+
+			.sunrise-wrapper {
+				background-color: transparent;
+				border: 2px solid white;
+				border-radius: 5px;
+				padding: 10px;
+				.sunrise-icon {
+					fill: white;
+				}
+			}
+		}
+	}
 }

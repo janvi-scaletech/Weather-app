@@ -8,7 +8,7 @@ import ResetPassword from 'features/auth/component/resetPassword';
 
 import { IState } from 'shared/interface/state';
 import Layout from 'hoc/layout/layout';
-import WeatherData from 'features/weather/container/weather';
+import WeatherData from 'features/weather/container/weatherData';
 
 const App: React.FC = () => {
 	const isLogin: boolean = useSelector((state: IState) => state.auth.isLogin);

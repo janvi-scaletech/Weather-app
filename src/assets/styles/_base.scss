@@ -6,16 +6,17 @@
 
 * {
 	font-family: $font-rubik;
+	font-family: $font-poppins;
 	font-size: $font-size-browser-default;
 }
 
 body {
 	@include margin(0);
 	@include padding(0);
-	background-color: $white;
+	background-color: $black;
 	font-size: $font-size-browser-default;
 	font-weight: $font-regular;
-	color: $black;
+	color: $white;
 	scroll-behavior: smooth;
 	overflow-x: hidden;
 }
