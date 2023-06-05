@@ -21,7 +21,7 @@ const ErrorHandler: FC = () => {
 				const data = res.data;
 				if (data && data.message) {
 					if (data.isError) {
-						notify(data.message, 'error');
+						// notify(data.message, 'error');
 						throw new Error(data.message as string);
 					} else {
 						notify(data.message, 'success');
@@ -40,12 +40,12 @@ const ErrorHandler: FC = () => {
 					// is http error code is 401, log out of the application
 					if (status === 401 && responseData) {
 						logout();
-						notify(error.message, 'error');
+						// notify(error.message, 'error');
 					} else if (res && responseData && responseData.message) {
 						// if error data contains message field, add error notification
 						notify(responseData.message, 'error');
 					} else {
-						notify(error.message, 'error');
+						// notify(error.message, 'error');
 					}
 					throw error;
 				}

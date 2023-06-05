@@ -1,23 +1,39 @@
 @import '../../../assets/styles/common/function.scss';
 @import '../../../assets/styles/variable';
-.input {
-	border: 2px solid red;
-	color: black;
-}
+
 .main-container {
 	.weather-info-wrapper {
+		height: 100vh;
 		.weather-description {
 			padding: 30px;
 			width: 70%;
 			background: white;
 			color: black;
 
+			.search-wrapper {
+				.search-input {
+					background: #bdbdbd1c;
+					border-radius: 4px;
+					color: black;
+					height: 35px;
+					padding-left: 30px;
+
+					&::placeholder {
+						font-size: 14px;
+					}
+				}
+				.search-icon {
+					top: 20px;
+					fill: #828282;
+				}
+			}
+
 			.date-info {
 				color: getColor($grey, 100);
 			}
 
 			.wind-information-wrapper {
-				background-color: #8282820f;
+				background-color: #bdbdbd1c;
 				border-radius: 5px;
 				width: 30%;
 				padding: 20px;
@@ -30,6 +46,7 @@
 		.weather-info {
 			width: 25%;
 			background: #4678b2;
+			background: linear-gradient(to bottom, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);
 			justify-content: space-between;
 			padding: 0px 25px;
 
@@ -38,6 +55,7 @@
 				border: 2px solid white;
 				border-radius: 5px;
 				padding: 10px;
+				margin-bottom: 20px;
 				.sunrise-icon {
 					fill: white;
 				}
