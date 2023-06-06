@@ -6,7 +6,7 @@ interface ISearchProps {
 }
 const WeatherDataSearch: FC<ISearchProps> = ({ handleSearch }) => {
 	return (
-		<div className='search-wrapper position--relative width--50 flex align-items--center'>
+		<div className='search-wrapper position--relative width--50 flex align-items--center justify-content--end'>
 			<SearchIcon className='search-icon position--absolute ml--5' />
 			<input
 				type='text'

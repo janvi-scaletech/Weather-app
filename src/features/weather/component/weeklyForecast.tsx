@@ -2,17 +2,17 @@ import React, { FC } from 'react';
 import moment from 'moment';
 import isEmpty from 'lodash/isEmpty';
 interface IWeeklyProps {
-	WeeklyHourlyData: any;
+	WeeklyHourlyData: Record<string, any>;
 }
 const WeeklyForecast: FC<IWeeklyProps> = ({ WeeklyHourlyData }) => {
 	return (
-		<div className=''>
+		<div className='width--full'>
 			<h3 className='font-size--lg mb--10 font--medium'>Weekly Forecast</h3>
 			<div className='weekly-forecast-wrapper overflow--auto'>
 				{!isEmpty(WeeklyHourlyData) &&
-					WeeklyHourlyData.map((data: any) => {
+					WeeklyHourlyData.map((data: any, index: number) => {
 						return (
-							<div className='ml--20'>
+							<div className='' key={index}>
 								<div className='flex align-items--center'>
 									<p className='width--25'>{moment(data.date).format('dddd')}</p>
 									<img className='mr--30 weekly-icon' src={data.day.condition.icon} />

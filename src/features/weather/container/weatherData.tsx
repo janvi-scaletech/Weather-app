@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { isEmpty } from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 import { debounce } from 'shared/util/utility';
 import HttpService from 'shared/services/http.service';
 import { notify } from 'shared/components/notification/notification';
@@ -11,7 +11,9 @@ import {
 	VisibilityIcon,
 	WindIcon
 } from 'shared/components/icons/icons';
+import { API_CONFIG } from 'shared/constants/api';
 import Spinner from 'shared/components/spinner/spinner';
+import { ISunriseData, IWeatherWidgetData } from '../interface/weather.interface';
 import WeatherDescription from '../component/weatherDescription';
 import HourlyForecast from '../component/hourlyForecast';
 import SunriseSunset from '../component/SunriseSunset';
@@ -22,23 +24,22 @@ import WeatherChart from '../component/forecastChart';
 import '../styles/forecast.scss';
 
 const WeatherData = () => {
-	const [weatherData, setWeatherData] = useState<any>({});
+	const [weatherData, setWeatherData] = useState<Record<string, any>>({});
 	const [todayHourlyData, setTodayHourlyData] = useState([]);
 	const [WeeklyHourlyData, setWeeklyHourlyData] = useState([]);
 
-	const [weatherWidgetData, setWeatherWidgetData] = useState<any>([]);
-	const [sunriseData, setSunriseData] = useState<any>([]);
+	const [weatherWidgetData, setWeatherWidgetData] = useState<IWeatherWidgetData[]>([]);
+	const [sunriseData, setSunriseData] = useState<ISunriseData[]>([]);
 	const [isLoading, setIsLoading] = useState(false);
 
 	const fetchWeatherAPI = useCallback((searchWord?: string) => {
 		setIsLoading(true);
 		HttpService.get(
-			`http://api.weatherapi.com/v1/forecast.json?key=1a86c128f38d457aab4173347230506&q=${
+			`${API_CONFIG.baseUrl}forecast.json?key=${process.env.REACT_APP_API_KEY}&q=${
 				searchWord ? searchWord : 'Ahmedabad'
 			}&days=10&aqi=no&alerts=no`
 		)
 			.then((res) => {
-				console.log(res, 'res');
 				setWeatherData(res);
 				setIsLoading(false);
 				setSunriseData([
@@ -105,9 +106,12 @@ const WeatherData = () => {
 							<hr className='mt--20 mb--20' />
 							<WeatherDescription weatherWidgetData={weatherWidgetData} />
 							<hr className='mt--20 mb--20' />
-							<WeeklyForecast WeeklyHourlyData={WeeklyHourlyData} />
-							<hr className='mt--20 mb--20' />
-							<WeatherChart hourlyData={WeeklyHourlyData} />
+							<div className='flex'>
+								<WeeklyForecast WeeklyHourlyData={WeeklyHourlyData} />
+								<WeatherChart WeeklyHourlyData={WeeklyHourlyData} />
+							</div>
+							{/*<hr className='mt--20 mb--20' />
+							<WeatherChart hourlyData={WeeklyHourlyData} />*/}
 						</div>
 
 						<div className='weather-info overflow--auto-y'>
@@ -121,8 +125,14 @@ const WeatherData = () => {
 				)}
 			</div>
 			{isLoading && (
-				<div className='display-flex-center '>
+				<div className='display-flex-center height--full-viewport'>
 					<Spinner />
+				</div>
+			)}
+
+			{isEmpty(weatherData) && !isLoading && (
+				<div className='display-flex-center pb--100'>
+					<h3>No Data Found</h3>
 				</div>
 			)}
 		</div>
