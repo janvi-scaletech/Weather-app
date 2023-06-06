@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import isEmpty from 'lodash/isEmpty';
 import moment from 'moment';
 interface IHourlyDataProps {

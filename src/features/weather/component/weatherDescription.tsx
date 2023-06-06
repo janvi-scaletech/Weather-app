@@ -1,5 +1,5 @@
+import { FC } from 'react';
 import isEmpty from 'lodash/isEmpty';
-import React, { FC } from 'react';
 import { IWeatherWidgetData } from '../interface/weather.interface';
 interface IWeatherDescriptionProps {
 	weatherWidgetData: IWeatherWidgetData[];
