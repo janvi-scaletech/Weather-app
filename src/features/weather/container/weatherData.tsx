@@ -3,21 +3,30 @@ import { isEmpty } from 'lodash';
 import { debounce } from 'shared/util/utility';
 import HttpService from 'shared/services/http.service';
 import { notify } from 'shared/components/notification/notification';
-import { SunriseIcon, SunsetIcon, WindIcon } from 'shared/components/icons/icons';
+import {
+	FeelLikeIcon,
+	HumidityIcon,
+	SunriseIcon,
+	SunsetIcon,
+	VisibilityIcon,
+	WindIcon
+} from 'shared/components/icons/icons';
 import WeatherDescription from '../component/weatherDescription';
 import HourlyForecast from '../component/hourlyForecast';
 import SunriseSunset from '../component/SunriseSunset';
 import WeatherForecast from '../component/weatherForecast';
 import WeatherHeader from '../component/weatherHeader';
 import '../styles/forcast.scss';
+import WeeklyForecast from '../component/weeklyForcast';
+import WeatherChart from '../component/forcastChart';
 
 const WeatherData = () => {
 	const [weatherData, setWeatherData] = useState<any>({});
 	const [todayHourlyData, setTodayHourlyData] = useState([]);
+	const [WeeklyHourlyData, setWeeklyHourlyData] = useState([]);
+
 	const [weatherWidgetData, setWeatherWidgetData] = useState<any>([]);
 	const [sunriseData, setSunriseData] = useState<any>([]);
-
-	console.log('weatherWidgetData', weatherWidgetData);
 
 	const fetchWeatherAPI = useCallback((searchWord?: string) => {
 		HttpService.get(
@@ -26,6 +35,7 @@ const WeatherData = () => {
 			}&days=10&aqi=no&alerts=no`
 		)
 			.then((res) => {
+				console.log(res, 'res');
 				setWeatherData(res);
 				setSunriseData([
 					{
@@ -48,20 +58,21 @@ const WeatherData = () => {
 					{
 						text: 'Feels Like',
 						data: `${res.current.feelslike_c}°C`,
-						icon: <WindIcon className='wind-icon mr--20 ml--10' />
+						icon: <FeelLikeIcon className='wind-icon mr--20 ml--10' />
 					},
 					{
 						text: 'Humidity',
 						data: `${res.current.humidity}%`,
-						icon: <WindIcon className='wind-icon mr--20 ml--10' />
+						icon: <HumidityIcon className='wind-icon mr--20 ml--10' />
 					},
 					{
 						text: 'Visibility',
 						data: `${res.current.vis_km} km`,
-						icon: <WindIcon className='wind-icon mr--20 ml--10' />
+						icon: <VisibilityIcon className='wind-icon mr--20 ml--10' />
 					}
 				]);
 				setTodayHourlyData(res.forecast.forecastday[0].hour);
+				setWeeklyHourlyData(res.forecast.forecastday);
 			})
 			.catch((err: Error) => {
 				console.log('err', err);
@@ -84,15 +95,16 @@ const WeatherData = () => {
 			<div className='main-container'>
 				{!isEmpty(weatherData) && (
 					<div className='weather-info-wrapper flex '>
-						<div className='weather-description'>
+						<div className='weather-description overflow--auto'>
 							<WeatherHeader handleSearch={handleSearch} />
 							<hr className='mt--20 mb--20' />
 							<WeatherDescription weatherWidgetData={weatherWidgetData} />
-
-							{/* <div>
-								<h3 className='font-size--lg font--medium'>Average Weekly Temperature</h3>
-							</div> */}
+							<hr className='mt--20 mb--20' />
+							<WeeklyForecast WeeklyHourlyData={WeeklyHourlyData} />
+							<hr className='mt--20 mb--20' />
+							<WeatherChart hourlyData={WeeklyHourlyData} />
 						</div>
+
 						<div className='weather-info overflow--auto-y'>
 							<WeatherForecast weatherData={weatherData} />
 							<HourlyForecast todayHourlyData={todayHourlyData} />

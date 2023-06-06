@@ -21,7 +21,7 @@ const WeatherForecast: FC<IWeatherDataProps> = ({ weatherData }) => {
 				<CloudIcon className='' />
 				<div className='flex align-items--center justify-content--between'>
 					<h3>{weatherData?.current?.temp_c}°C</h3>
-					<p>{weatherData?.current.condition.text}</p>
+					<p className='font-size--22'>{weatherData?.current.condition.text}</p>
 				</div>
 				<hr />
 			</div>

@@ -13,9 +13,9 @@ const HourlyForecast: FC<IHourlyDataProps> = ({ todayHourlyData }) => {
 					todayHourlyData.map((data: any) => {
 						return (
 							<div className='ml--20'>
-								<p>{moment.unix(data.time_epoch).format('LT')}</p>
+								<p className='font-size--sm'>{moment.unix(data.time_epoch).format('LT')}</p>
 								<img src={data.condition.icon} />
-								<p>{data.temp_c}</p>
+								<p className='font-size--sm'>{data.temp_c} °C</p>
 							</div>
 						);
 					})}

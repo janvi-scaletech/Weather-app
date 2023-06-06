@@ -15,7 +15,7 @@
 					background: #bdbdbd1c;
 					border-radius: 4px;
 					color: black;
-					height: 35px;
+					height: 40px;
 					padding-left: 30px;
 
 					&::placeholder {
@@ -40,6 +40,48 @@
 
 				.wind-icon {
 					fill: getColor($blue, 100);
+				}
+			}
+			.weekly-forecast-wrapper {
+				background-color: rgba(189, 189, 189, 0.1098039216);
+				border-radius: 5px;
+				width: 50%;
+
+				.weekly-icon {
+					height: 50px;
+					width: 50px;
+				}
+				.min-value {
+					color: #bdbdbd;
+				}
+				.progress {
+					background: rgba(105, 109, 162, 0.1);
+					justify-content: flex-start;
+					border-radius: 100px;
+					align-items: center;
+					position: relative;
+					display: flex;
+					height: 8px;
+					width: 100px;
+					padding: 0 8px;
+				}
+
+				.progress-value {
+					animation: load 3s normal forwards;
+					box-shadow: 0 10px 40px -10px #fff;
+					border-radius: 100px;
+					background: rgb(227, 191, 191);
+					height: 8px;
+					width: 20;
+				}
+
+				@keyframes load {
+					0% {
+						width: 0;
+					}
+					100% {
+						width: 70%;
+					}
 				}
 			}
 		}

@@ -7,7 +7,7 @@ interface ISunriseSunsetProps {
 const SunriseSunset: FC<ISunriseSunsetProps> = ({ sunriseData }) => {
 	return (
 		<div>
-			<h3 className='font-size--22 mb--20'>Sunrise & Sunset</h3>
+			<h3 className='font-size--22 mb--20 mt--20'>Sunrise & Sunset</h3>
 			<div>
 				{!isEmpty(sunriseData) &&
 					sunriseData.map(({ text, icon, value }: any) => {
