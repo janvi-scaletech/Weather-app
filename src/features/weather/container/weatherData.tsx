@@ -11,14 +11,15 @@ import {
 	VisibilityIcon,
 	WindIcon
 } from 'shared/components/icons/icons';
+import Spinner from 'shared/components/spinner/spinner';
 import WeatherDescription from '../component/weatherDescription';
 import HourlyForecast from '../component/hourlyForecast';
 import SunriseSunset from '../component/SunriseSunset';
 import WeatherForecast from '../component/weatherForecast';
 import WeatherHeader from '../component/weatherHeader';
-import '../styles/forcast.scss';
-import WeeklyForecast from '../component/weeklyForcast';
-import WeatherChart from '../component/forcastChart';
+import WeeklyForecast from '../component/weeklyForecast';
+import WeatherChart from '../component/forecastChart';
+import '../styles/forecast.scss';
 
 const WeatherData = () => {
 	const [weatherData, setWeatherData] = useState<any>({});
@@ -27,8 +28,10 @@ const WeatherData = () => {
 
 	const [weatherWidgetData, setWeatherWidgetData] = useState<any>([]);
 	const [sunriseData, setSunriseData] = useState<any>([]);
+	const [isLoading, setIsLoading] = useState(false);
 
 	const fetchWeatherAPI = useCallback((searchWord?: string) => {
+		setIsLoading(true);
 		HttpService.get(
 			`http://api.weatherapi.com/v1/forecast.json?key=1a86c128f38d457aab4173347230506&q=${
 				searchWord ? searchWord : 'Ahmedabad'
@@ -37,6 +40,7 @@ const WeatherData = () => {
 			.then((res) => {
 				console.log(res, 'res');
 				setWeatherData(res);
+				setIsLoading(false);
 				setSunriseData([
 					{
 						text: 'Sunrise',
@@ -76,6 +80,7 @@ const WeatherData = () => {
 			})
 			.catch((err: Error) => {
 				console.log('err', err);
+				setIsLoading(false);
 				notify('please enter valid city for search', 'error');
 			});
 	}, []);
@@ -115,6 +120,11 @@ const WeatherData = () => {
 					</div>
 				)}
 			</div>
+			{isLoading && (
+				<div className='display-flex-center '>
+					<Spinner />
+				</div>
+			)}
 		</div>
 	);
 };

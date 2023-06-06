@@ -7,14 +7,14 @@
 		.weather-description {
 			padding: 30px;
 			width: 70%;
-			background: white;
-			color: black;
+			background: $white;
+			color: $black;
 
 			.search-wrapper {
 				.search-input {
 					background: #bdbdbd1c;
 					border-radius: 4px;
-					color: black;
+					color: $black;
 					height: 40px;
 					padding-left: 30px;
 
