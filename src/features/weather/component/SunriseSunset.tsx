@@ -19,8 +19,8 @@ const SunriseSunset: FC<ISunriseSunsetProps> = ({ sunriseData }) => {
 							>
 								{icon}
 								<div>
-									<p>{text}</p>
-									<p>{value}</p>
+									<p className='font-size--26 font--medium'>{text}</p>
+									<p className='font-size--24 font--bold '>{value}</p>
 								</div>
 							</div>
 						);

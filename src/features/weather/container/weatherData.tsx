@@ -110,8 +110,6 @@ const WeatherData = () => {
 								<WeeklyForecast WeeklyHourlyData={WeeklyHourlyData} />
 								<WeatherChart WeeklyHourlyData={WeeklyHourlyData} />
 							</div>
-							{/*<hr className='mt--20 mb--20' />
-							<WeatherChart hourlyData={WeeklyHourlyData} />*/}
 						</div>
 
 						<div className='weather-info overflow--auto-y'>
