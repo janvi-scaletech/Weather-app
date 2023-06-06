@@ -86,11 +86,9 @@ const WeatherData = () => {
 			});
 	}, []);
 
-	const handleSearch = debounce(
-		useCallback((value: string) => {
-			fetchWeatherAPI(value);
-		}, [])
-	);
+	const handleSearch = debounce((value: string) => {
+		fetchWeatherAPI(value);
+	});
 
 	useEffect(() => {
 		fetchWeatherAPI();
